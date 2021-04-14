@@ -9,8 +9,8 @@ import (
 
 //“1.1.1　テストエコーサーバーの実行”
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	dump, err := httputil.DumpRequest(r, true)
+func handler(w http.ResponseWriter, r *http.Request) { //クライアントからアクセスがあったときに呼ばれる。
+	dump, err := httputil.DumpRequest(r, true) //HTTP /1.x形式で返す。
 	if err != nil {
 		http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
 		return
@@ -21,7 +21,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	var httpServer http.Server
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", handler) //"/"でアクセスしたらhandlerを実行する。
 	log.Println("start http listening :18888")
 	httpServer.Addr = ":18888"
 	log.Println(httpServer.ListenAndServe())

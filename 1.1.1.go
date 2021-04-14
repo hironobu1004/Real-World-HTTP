@@ -7,7 +7,8 @@ import (
 	"net/http/httputil"
 )
 
-//http hundler
+//“1.1.1　テストエコーサーバーの実行”
+
 func handler(w http.ResponseWriter, r *http.Request) {
 	dump, err := httputil.DumpRequest(r, true)
 	if err != nil {
